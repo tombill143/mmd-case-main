@@ -8,14 +8,14 @@ export default function Home() {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
-        <h1 className={styles.headline}>Hello MMD</h1>
+        <h1 className={styles.headline}>Hello Team Cluster Moon</h1>
         <div className={styles.content}>
           <p>
             To get started, edit <code>pages/index.js</code> and save to reload.
           </p>
         </div>
         <div className={styles.content}>
-          <h2>Basic form example</h2>
+          <h2>Let's Have a meeting soon</h2>
           <p>
             This is simple example of how you could submit a form to another
             page in Next.js, without using a custom <code>submit</code> function
