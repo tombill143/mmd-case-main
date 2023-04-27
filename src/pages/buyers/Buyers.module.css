@@ -21,9 +21,29 @@
   background-color: var(--dusty-aqua-light);
   border: 1px solid var(--dusty-aqua);
   margin-bottom: 1rem;
+  width: 20rem;
+  height: auto;
+  /* overflow: visible; */
+  overflow-wrap:break-word;
+  
+  /* max-width: 50vw; */
+  /* overflow:-moz-hidden-unscrollable; */
+  /* word-wrap: break-word; */
+
+  /* overflow-wrap: normal; */
+  /* overflow-wrap: break-word; */
+
 }
+
+/* .content p{
+  word-wrap: break-word;
+
+} */
+
 .content :first-child {
   margin-top: 0;
+
+
 }
 .content :last-child {
   margin-bottom: 0;
