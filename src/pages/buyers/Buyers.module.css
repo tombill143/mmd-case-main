@@ -7,7 +7,16 @@
   line-height: 1.2;
 }
 
+.content_container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* background-color: aquamarine; */
+  gap: 1rem;
+
+}
+
 .content {
+  
   padding: 1rem;
   background-color: var(--dusty-aqua-light);
   border: 1px solid var(--dusty-aqua);
