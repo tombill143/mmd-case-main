@@ -130,3 +130,14 @@ textarea {
 select#property-type {
   padding: 0.5em;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.buyer {
+  border: 1px solid black;
+  padding: 20px;
+}
