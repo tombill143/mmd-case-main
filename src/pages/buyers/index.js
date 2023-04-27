@@ -4,6 +4,14 @@ import { useRouter } from "next/router";
 import { useState, useEffect} from "react";
 import styles from "./Buyers.module.css";
 
+//the checkbox button
+
+// import * as React from 'react';
+// import Checkbox from '@mui/material/Checkbox';
+
+
+//https://mui.com/material-ui/react-checkbox/
+
 export default function Buyers() {
   const [buyerProfiles, setBuyerProfiles] = useState([]);
 
@@ -17,6 +25,12 @@ export default function Buyers() {
   }, []);
 
   const { query } = useRouter();
+
+
+//   const [checked, setChecked] = React.useState(true);
+
+//  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+// setChecked(event.target.checked);
   return (
     <>
       <Head>
@@ -37,6 +51,11 @@ export default function Buyers() {
             //Not gonna change it now, as i want to see what need to be done to hook this site up to contact/first site
             <div className={styles.content} key={buyer.id}>
               <h2>Buyer Id: {buyer.id}:</h2>
+              {/* <Checkbox
+                checked={checked}
+                onChange={handleChange}
+               inputProps={{ 'aria-label': 'controlled' }}
+                /> */}
               <pre>
                 {/* "respects line breaks" */}
                 {/* <p>Buyer Id: {buyer.id}</p> */}

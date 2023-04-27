@@ -1,3 +1,6 @@
+/* @import "./src/styles/globals.css"; */
+/* @import "fonts.css"; */
+
 .headline {
   font-size: 3rem;
   font-family: var(--font-serif);
@@ -21,10 +24,11 @@
   background-color: var(--dusty-aqua-light);
   border: 1px solid var(--dusty-aqua);
   margin-bottom: 1rem;
-  width: 20rem;
+  width: 25rem;
   height: auto;
   /* overflow: visible; */
   overflow-wrap:break-word;
+  
   
   /* max-width: 50vw; */
   /* overflow:-moz-hidden-unscrollable; */
@@ -35,10 +39,12 @@
 
 }
 
-/* .content p{
-  word-wrap: break-word;
+.content p{
+  /* word-wrap: break-word; */
+  /* --font-sans: "Lato", sans-serif;  this doesnt show the right font as it should??*/
+  font-family: lato;
 
-} */
+}
 
 .content :first-child {
   margin-top: 0;
