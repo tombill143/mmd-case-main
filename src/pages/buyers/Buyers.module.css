@@ -19,3 +19,10 @@
 .content :last-child {
   margin-bottom: 0;
 }
+
+.content {
+  max-width: 100%;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
