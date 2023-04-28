@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect} from "react";
 import styles from "./Buyers.module.css";
+import Link from "next/link";
 
 export default function Buyers() {
   const [buyerProfiles, setBuyerProfiles] = useState([]);
@@ -18,9 +19,10 @@ export default function Buyers() {
     fetchBuyerProfiles();
   }, []);
 
-  const { query } = useRouter();
+  const router = useRouter();
 
-////////////////////////
+
+
  //buyer checkbox
   const handleBuyerSelect = (buyerId) => {
     // If buyer is already selected, remove it from the selected buyers list
@@ -30,15 +32,19 @@ export default function Buyers() {
       // Otherwise, add it to the selected buyers list
       setSelectedBuyers([...selectedBuyers, buyerId]);
     }
+
+   
   };
-  ////////////////////////
 
-
+   //function to send user to contact page!
+  const contactClick = () => {
+    router.push('/contact');
+  };
 
 //   const [checked, setChecked] = React.useState(true);
-
 //  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 // setChecked(event.target.checked);
+
   return (
     <>
       <Head>
@@ -83,9 +89,19 @@ export default function Buyers() {
                 {/* <code>{JSON.stringify(buyer, null, 2)}</code> */}
               </pre>
             </div>
-          ))}
+          ))};
+
+
+          <Link href="/contact"> 
+          <button onClick={contactClick}>Contact Potential Buyers</button>
+          </Link>
         </div>
       </div>
+      
+      
+      
+      {/* href className={styles.button} onClick={contactClick}>Contact Potential Buyers</button> */}
+      {/* <button className={styles.button} onClick={contactClick}>Contact Potential Buyers</button> */}
     </>
   );
 }
