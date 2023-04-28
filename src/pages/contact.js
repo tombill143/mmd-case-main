@@ -24,49 +24,44 @@ function ContactForm() {
   return (
     <>
       <Head>
-        <title>ContactForm</title>
+        <title>Contact Potential Buyers</title>
       </Head>
       <div className="formWrapper">
-        <h1 className={styles.headline}>Find A buyer for your property</h1>
-        <div className={styles.content}>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Price</label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <label htmlFor="email">Size in Square Meters</label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="zipcode">Zip Code</label>
-            <input
-              id="zipcode"
-              type="text"
-              value={zipcode}
-              onChange={(e) => setZipcode(e.target.value)}
-            />
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <label htmlFor="property-type">Property Type:</label>
-            <select id="property-type" name="property-type">
-              <option value="">Choose a property type</option>
-              <option value="house">Villa</option>
-              <option value="apartment">Lejlighed</option>
-              <option value="condo">Rækkehus</option>
-            </select>
-            <button type="submit">Find Potential Buyers</button>
-          </form>
+        <h1 className={styles.headline}>Contact Potential Buyers</h1>
+
+        <div className="ref-customer">
+          <p className="ref">Ref: Customer 1</p>
+          <p className="ref">Ref: Customer 2</p>
         </div>
+
+        <form action="./thank-you" method="GET" className={styles.form}>
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label htmlFor="zipcode">Zip Code</label>
+          <input
+            id="zipcode"
+            type="text"
+            value={zipcode}
+            onChange={(e) => setZipcode(e.target.value)}
+            required
+          />
+
+          <button className={styles.button}>Find Potential Buyers</button>
+        </form>
       </div>
     </>
   );

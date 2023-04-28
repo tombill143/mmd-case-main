@@ -141,3 +141,32 @@ select#property-type {
   border: 1px solid black;
   padding: 20px;
 }
+
+.thanks {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.heart {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 3em;
+}
+
+.ref-customer {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: dashed;
+  border-radius: 12px;
+  background-color: lightblue;
+  width: 12em;
+}
+
+.ref {
+  margin-left: 0.5em;
+}
+
+#return {
+  display: block;
+  margin: 0 auto;
+}
