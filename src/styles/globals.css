@@ -67,10 +67,15 @@ button {
 }
 
 button {
-  background-color: #0070f3;
+  background-color: var(--blue);
+  /* background-color: #0070f3; */
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.button:hover {
+  background: var(--hover);
 }
 
 h2 {

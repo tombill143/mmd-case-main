@@ -20,8 +20,7 @@ export default function Buyers() {
   }, []);
 
   const router = useRouter();
-
-
+  
 
  //buyer checkbox
   const handleBuyerSelect = (buyerId) => {
@@ -93,7 +92,7 @@ export default function Buyers() {
 
 
           <Link href="/contact"> 
-          <button onClick={contactClick}>Contact Potential Buyers</button>
+          <button className={styles.button} onClick={contactClick}>Contact Potential Buyers</button>
           </Link>
         </div>
       </div>

@@ -61,6 +61,12 @@
 
 }
 
-.content .checkbox{
+/* .content .checkbox{
 /* trying to find the tag to change the style of the checkbox color etc. */
+
+
+
+
+.button:hover {
+  background: var(--hover);
 }
