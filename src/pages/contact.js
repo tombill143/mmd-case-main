@@ -7,18 +7,15 @@ function ContactForm() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [zipcode, setZipcode] = useState("");
+  const [selectedBuyers, setSelectedBuyers] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await fetch("/api/contact", {
-      body: JSON.stringify({ name, email, zipcode, message }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-    const result = await res.json();
-    console.log(result);
+  const handleCheckboxChange = (e) => {
+    const buyerName = e.target.name;
+    if (e.target.checked) {
+      setSelectedBuyers([...selectedBuyers, buyerName]);
+    } else {
+      setSelectedBuyers(selectedBuyers.filter((name) => name !== buyerName));
+    }
   };
 
   return (

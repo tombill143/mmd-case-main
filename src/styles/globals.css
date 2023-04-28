@@ -125,6 +125,7 @@ textarea {
 .formWrapper {
   margin-left: 24em;
   margin-right: 20em;
+  margin-bottom: 3em;
 }
 
 select#property-type {

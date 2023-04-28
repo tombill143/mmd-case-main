@@ -1,3 +1,6 @@
+/* @import "./src/styles/globals.css"; */
+/* @import "fonts.css"; */
+
 .headline {
   font-size: 3rem;
   font-family: var(--font-serif);
@@ -7,12 +10,37 @@
   line-height: 1.2;
 }
 
+.content_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* background-color: aquamarine; */
+  gap: 1rem;
+}
+
 .content {
   padding: 1rem;
   background-color: var(--dusty-aqua-light);
   border: 1px solid var(--dusty-aqua);
   margin-bottom: 1rem;
+  width: 25rem;
+  height: auto;
+  /* overflow: visible; */
+  overflow-wrap: break-word;
+
+  /* max-width: 50vw; */
+  /* overflow:-moz-hidden-unscrollable; */
+  /* word-wrap: break-word; */
+
+  /* overflow-wrap: normal; */
+  /* overflow-wrap: break-word; */
 }
+
+.content p {
+  /* word-wrap: break-word; */
+  /* --font-sans: "Lato", sans-serif;  this doesnt show the right font as it should??*/
+  font-family: lato;
+}
+
 .content :first-child {
   margin-top: 0;
 }
@@ -20,9 +48,39 @@
   margin-bottom: 0;
 }
 
+.content input {
+  width: auto;
+  box-shadow: none;
+}
+
 .content {
-  max-width: 100%;
   overflow: hidden;
-  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.text {
+  max-width: 100%;
+}
+
+.checkbox-container {
+  display: block;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.family {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 3em;
+}
+
+.pre {
+  max-width: 600px;
+  word-wrap: break-word;
+  margin-bottom: 1em;
+}
+
+.content p {
   white-space: pre-wrap;
 }
