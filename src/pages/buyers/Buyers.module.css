@@ -54,3 +54,13 @@
 .content :last-child {
   margin-bottom: 0;
 }
+
+.content input{
+  width: auto;
+  box-shadow: none;
+
+}
+
+.content .checkbox{
+/* trying to find the tag to change the style of the checkbox color etc. */
+}
