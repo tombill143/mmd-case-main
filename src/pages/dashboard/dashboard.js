@@ -9,6 +9,7 @@ function AdminDashBoard() {
       <title>Admin Dashboard | EDC</title>
     </Head>
     <article>
+      <h1 className={styles.headline}>Latest Contacts</h1>
       <p>Date</p>
       <p>Name</p>
       <Link to>
