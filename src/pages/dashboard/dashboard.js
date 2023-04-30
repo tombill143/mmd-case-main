@@ -3,11 +3,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./dashboard.module.css";
 
-function App () {
+function AdminDashBoard () {
 <>
-<Head>
+  <Head>
         <title>Admin Dashboard | EDC</title>
-      </Head>
+  </Head>
 <article>
 <p>Date</p>
 <p>Name</p>
@@ -25,3 +25,4 @@ function App () {
 
     );
 }
+export default AdminDashBoard;
