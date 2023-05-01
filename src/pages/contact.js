@@ -1,70 +1,47 @@
-import { useState } from "react";
-import styles from "./Home.module.css";
-import Head from "next/head";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-function ContactForm() {
+export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [zipcode, setZipcode] = useState("");
+  const [selectedBuyers, setSelectedBuyers] = useState([]);
 
-  const handleSubmit = async (e) => {
+  const router = useRouter();
+  const { selectedBuyers: selectedBuyersQuery } = router.query;
+
+  // Parse the query parameter and update the selectedBuyers state
+  useEffect(() => {
+    if (selectedBuyersQuery) {
+      const selectedBuyersArray = selectedBuyersQuery.split(",");
+      setSelectedBuyers(selectedBuyersArray);
+    }
+  }, [selectedBuyersQuery]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const res = await fetch("/api/contact", {
-      body: JSON.stringify({ name, email, zipcode, message }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-    const result = await res.json();
-    console.log(result);
+    // Do something with the form data and the selectedBuyers data
+    console.log({ name, email, message, zipcode, selectedBuyers });
   };
 
   return (
     <>
-      <Head>
-        <title>Contact Potential Buyers</title>
-      </Head>
-      <div className="formWrapper">
-        <h1 className={styles.headline}>Contact Potential Buyers</h1>
-
-        <div className="ref-customer">
-          <p className="ref">Ref: Customer 1</p>
-          <p className="ref">Ref: Customer 2</p>
-        </div>
-
-        <form action="./thank-you" method="GET" className={styles.form}>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <label htmlFor="zipcode">Zip Code</label>
-          <input
-            id="zipcode"
-            type="text"
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
-            required
-          />
-
-          <button className={styles.button}>Find Potential Buyers</button>
-        </form>
-      </div>
+      <h1>Contact Potential Buyers</h1>
+      {selectedBuyers.length > 0 && (
+        <>
+          <h2>Selected buyers:</h2>
+          <ul>
+            {selectedBuyers.map((buyer) => (
+              <li key={buyer}>Buyer Id: {buyer}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      <form onSubmit={handleSubmit}>
+        {/* Form fields */}
+        <button type="submit">Submit</button>
+      </form>
     </>
   );
 }
-
-export default ContactForm;
