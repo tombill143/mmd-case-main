@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./Home.module.css";
 import Head from "next/head";
-
 //import supabase
 
 function AdminDashBoard() {
