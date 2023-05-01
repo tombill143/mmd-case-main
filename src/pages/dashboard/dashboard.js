@@ -1,13 +1,13 @@
 import { useState } from "react";
+import styles from "./Home.module.css";
 import Head from "next/head";
-
 //import supabase
 
 function AdminDashBoard() {
   //const [date, setDate] = import from Supabase (sort by create at)
   //const [name, setName] =  import data from Supabase (id?)
   //const [email, setEmail] = useState("");
-  //prize fetch data from api
+  //price fetch data from api
   //const [zipcode, setZipcode] = useState(""); fetch data from api
   //size from api
   //estate type fetch data from api
@@ -21,14 +21,9 @@ function AdminDashBoard() {
         <h1 className={styles.headline}>Latest Contacts</h1>
         <p>Date</p>
         <p>Name</p>
-        <Link to>
-          {" "}
-          <p>Email</p>{" "}
-        </Link>
-        <Link to>
-          <p>Phone</p>{" "}
-        </Link>
-        <p>Contact</p>
+        <a href="mailto:">Email</a>
+        <a>Phone</a>
+        <input type="checkbox">Contact</input>
         <p>Price</p>
         <p>Zipcode</p>
         <p>Size</p>
