@@ -84,7 +84,12 @@ export default function Buyers() {
               </div>
             </div>
           ))}
-          <Link href="/contact">
+          <Link
+            href={{
+              pathname: "/contact",
+              query: { selectedBuyers: selectedBuyers.join(",") },
+            }}
+          >
             <button
               className={styles.button}
               onClick={contactClick}
