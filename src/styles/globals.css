@@ -125,6 +125,7 @@ textarea {
 .formWrapper {
   margin-left: 24em;
   margin-right: 20em;
+  margin-bottom: 3em;
 }
 
 select#property-type {
@@ -140,4 +141,50 @@ select#property-type {
 .buyer {
   border: 1px solid black;
   padding: 20px;
+}
+
+.thanks {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.heart {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 3em;
+}
+
+.ref-customer {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: dashed;
+  border-radius: 12px;
+  background-color: lightblue;
+  width: 12em;
+}
+
+.ref {
+  margin-left: 0.5em;
+}
+
+#return {
+  display: block;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  border: 1px dashed black;
+  width: 15%;
+  margin-left: 1em;
+  border-radius: 16px;
+  background-color: #93d0fe;
+}
+
+#selectedBuyers {
+  margin-right: 26em;
+}
+
+#contactform {
+  margin-left: 33em;
 }
