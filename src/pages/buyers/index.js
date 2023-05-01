@@ -54,7 +54,7 @@ export default function Buyers() {
           Thank you for submitting your info on your property. On this page we
           have listed suitable buyers. Please read through the list and add the
           ones that are interesting by clicking the + icon in the corner of
-          each buyer.
+          each buyer
         </p>
         <div className={styles.content_container}>
           {buyerProfiles.map((buyer) => (
