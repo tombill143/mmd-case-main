@@ -31,16 +31,11 @@ function AdminDashboard() {
 
      <h1 className={styles.headline}>Latest Contacts</h1>
       <div className="wrapper">
-        <h2 className={styles.content}>
+        <h2 className={styles.adminhello}>
           Hi Admin, see latest sellers contacts:
         </h2>
         <div className={styles.content_container}>
-
-          {/* <div className={styles.content}> */}
-          <div>
-      
-            {/* where the data will be stored */}
-            <div>
+          
              {sellerinfo?.length > 0 ? (
         //if nothing is loaded, it will write loading... as in the p-tag, instead of error
         //dont think the ? and stuff is nessesary but i trie troubleshooting along the way
@@ -48,12 +43,17 @@ function AdminDashboard() {
             <ul>
              {sellerinfo.map((seller) => (
               <div className={styles.content} key={seller.id}>
-                <p>{seller.created_at}</p>
-                <p>{seller.name}</p>
-                <p>{seller.name}</p>
-                <p>{seller.email}</p>
-                <p>{seller.phone}</p>
-
+                <p>Date: {seller.created_at}</p>
+                <p>Name: {seller.name}</p>
+                <p>E-mail: <a href="emailto:">{seller.email}</a></p>
+                <p>Phone: <a href="phone:">{seller.phone}</a></p>
+                <p>Buyers: {seller.buyers}</p>
+                <p>Zipcode: {seller.zipcode}</p>
+                <p>Estate type: {seller.estateType}</p>
+                <p>Size: {seller.size} m2</p>
+                <p className={styles.messagebox}>Message from client: {seller.message}</p>
+              
+          
               </div>
              
             //seller is a variable we create in here, not linked to names in the database really
@@ -63,15 +63,15 @@ function AdminDashboard() {
               ) : (
             <p>Loading...</p>
       )}
-    </div>
+    
 
 
 
 
-          </div>
+          
 
         </div>
-        </div>
+      </div>
 
     
   </>
