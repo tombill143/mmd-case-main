@@ -19,3 +19,9 @@
 .content :last-child {
   margin-bottom: 0;
 }
+
+.wrapper{
+  color: red;
+}
+
+
