@@ -46,8 +46,12 @@ function ContactForm() {
             />
           </svg>
 
-          <button id="return" className={styles.button}>
-            Return to Home Page{" "}
+          <button
+            id="return"
+            className={styles.button}
+            onClick={() => (window.location.href = "http://localhost:3000/")}
+          >
+            Return to Home Page
           </button>
         </div>
       </div>

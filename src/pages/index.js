@@ -79,6 +79,12 @@ export default ContactForm; */
 import Head from "next/head";
 import styles from "./Home.module.css";
 import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  "https://tpysfrkiwckoydwsbleo.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRweXNmcmtpd2Nrb3lkd3NibGVvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4MjU4MzQxNCwiZXhwIjoxOTk4MTU5NDE0fQ.H5j86z9-UnYgRdUX1jifGjuq1zqchKFdNE1aiMFEbxA"
+);
 
 export default function Home() {
   const [price, setPrice] = useState("");
@@ -88,15 +94,20 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/api/contact", {
-      body: JSON.stringify({ price, size, zipcode, message }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
+    const { data, error } = await supabase
+      .from("properties")
+      .insert({ price, size, zipcode, message });
+
+    if (error) {
+      console.error(error);
+    } else {
+      console.log("Data inserted successfully:", data);
+    }
+
+    Router.push({
+      pathname: "/contact",
+      query: { data: JSON.stringify(data) },
     });
-    const result = await res.json();
-    console.log(result);
   };
 
   return (

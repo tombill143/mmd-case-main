@@ -56,11 +56,12 @@ export default function Buyers() {
           buyer.
         </p>
         <div className={styles.content_container}>
+          {/* Render a div for each buyer profile */}
           {buyerProfiles.map((buyer) => (
             <div className={styles.content} key={buyer.id}>
               <h2>Buyer Id: {buyer.id}:</h2>
 
-              {/* Buyer information */}
+              {/* Display buyer information */}
               <pre>
                 <p>Max price: {buyer.maxPrice} DKK</p>
                 <p>Minimum size: {buyer.minSize} m2</p>
@@ -71,7 +72,7 @@ export default function Buyers() {
                 <p>Possible take-over-date: {buyer.takeoverDate}</p>
               </pre>
 
-              {/* Checkbox for buyer selection */}
+              {/* Render a checkbox for selecting the buyer */}
               <div className="checkbox-container">
                 <label>
                   Choose buyer
@@ -84,6 +85,8 @@ export default function Buyers() {
               </div>
             </div>
           ))}
+
+          {/* Render a button for navigating to the contact page */}
           <Link
             href={{
               pathname: "/contact",
@@ -104,9 +107,6 @@ export default function Buyers() {
           </Link>
         </div>
       </div>
-
-      {/* href className={styles.button} onClick={contactClick}>Contact Potential Buyers</button> */}
-      {/* <button className={styles.button} onClick={contactClick}>Contact Potential Buyers</button> */}
     </>
   );
 }

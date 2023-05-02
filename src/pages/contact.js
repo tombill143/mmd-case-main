@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./buyers/Buyers.module.css";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  "https://tpysfrkiwckoydwsbleo.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRweXNmcmtpd2Nrb3lkd3NibGVvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4MjU4MzQxNCwiZXhwIjoxOTk4MTU5NDE0fQ.H5j86z9-UnYgRdUX1jifGjuq1zqchKFdNE1aiMFEbxA"
+);
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -19,12 +25,31 @@ export default function Contact() {
     }
   }, [selectedBuyersQuery]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Do something with the form data and the selectedBuyers data
-    console.log({ name, email, phone, selectedBuyers });
+    const { data, error } = await supabase
+      .from("seller-info")
+      .insert([{ name, email, phone }]);
+    if (error) {
+      console.log("Error inserting data: ", error.message);
+    } else {
+      console.log("Data inserted successfully: ", data);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, phone }),
+      });
+      console.log("Response status:", response.status);
+      if (response.ok) {
+        console.log("Navigating to success page...");
+      } else {
+        console.log("Error submitting form data");
+      }
+    }
+    router.push("/thank-you");
   };
-
   return (
     <>
       <h1 className={styles.headline}>Contact Potential Buyers</h1>
