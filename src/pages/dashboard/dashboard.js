@@ -15,12 +15,27 @@ function AdminDashboard() {
 
   useEffect(() => {
     getInfo();
-  }, []);
+  }, [sellerinfo]);
+  //putting sellerinfo in here makes the state reload immediately on screen 
+  //by leaving it empty we have to manually reload the page to see the change
 
   async function getInfo() {
     const { data } = await supabase.from("sellerinfo").select();
     setSellerInfo(data);
   }
+
+
+  //delete function!
+  const deleteSeller = async (sellerId) => {
+    try {
+      await supabase.from('sellerinfo').delete().eq('id', sellerId);
+      setSellerInfo(sellerId.filter((seller) => seller.id != sellerId));
+    } catch (error) {
+      console.log('error', error);
+    }
+    //https://dev.to/dailydevtips1/deleting-records-from-a-supabase-database-obp
+};
+ 
 
   return (
 
@@ -52,8 +67,7 @@ function AdminDashboard() {
                 <p>Estate type: {seller.estateType}</p>
                 <p>Size: {seller.size} m2</p>
                 <p className={styles.messagebox}>Message from client: {seller.message}</p>
-              
-          
+                <button className={styles.xButton}onClick={() => deleteSeller(seller.id)}>x</button>
               </div>
              
             //seller is a variable we create in here, not linked to names in the database really
@@ -63,23 +77,9 @@ function AdminDashboard() {
               ) : (
             <p>Loading...</p>
       )}
-    
-
-
-
-
-          
-
         </div>
       </div>
-
-    
   </>
-
-
-
-    
-
   );
 }
 
