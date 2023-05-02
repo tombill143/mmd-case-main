@@ -16,7 +16,9 @@ function AdminDashBoard() {
         </h2>
         <div className={styles.content_container}>
           <div className={styles.content}>
+            {/* there will be 5 containers each one of them has 5 (first row second coumn is an x button) rows and 2 columns */}
             <p>Date</p>
+            {/* Instead of names like date, price etc it will display the dynamic data fetched from supabase */}
             <button className={styles.xButton}>x</button>
             <p>Name</p>
             <p>Price</p>
