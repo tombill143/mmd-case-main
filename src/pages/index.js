@@ -105,10 +105,16 @@ export default function Home() {
     }
 
     Router.push({
-      pathname: "/contact",
+      pathname:
+        "http://localhost:3000/contact?selectedBuyers=f0118597%2Ca2a94863",
       query: { data: JSON.stringify(data) },
     });
   };
+
+  console.log("Size: ", size);
+  console.log("Price: ", price);
+  console.log("Zipcode: ", zipcode);
+  console.log("Message: ", message);
 
   return (
     <>
@@ -123,6 +129,7 @@ export default function Home() {
             <input
               id="price"
               type="text"
+              name="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               required
@@ -131,6 +138,7 @@ export default function Home() {
             <input
               id="size"
               type="text"
+              name="size"
               value={size}
               onChange={(e) => setSize(e.target.value)}
               required
@@ -139,6 +147,7 @@ export default function Home() {
             <input
               id="zipcode"
               type="text"
+              name="zipcode"
               value={zipcode}
               onChange={(e) => setZipcode(e.target.value)}
               required
@@ -147,15 +156,22 @@ export default function Home() {
             <textarea
               id="message"
               value={message}
+              name="message"
               onChange={(e) => setMessage(e.target.value)}
               required
             />
             <label htmlFor="property-type">Property Type:</label>
             <select id="property-type" name="property-type" required>
               <option value="">Choose a property type</option>
-              <option value="house">Villa</option>
-              <option value="apartment">Lejlighed</option>
-              <option value="condo">Rækkehus</option>
+              <option id="villa" name="villa" value="villa">
+                Villa
+              </option>
+              <option id="apartment" name="apartment" value="apartment">
+                Lejlighed
+              </option>
+              <option id="condo" name="condon" value="condo">
+                Rækkehus
+              </option>
             </select>
             <button className={styles.button}>Find Potential Buyers</button>
           </form>

@@ -90,7 +90,16 @@ export default function Buyers() {
           <Link
             href={{
               pathname: "/contact",
-              query: { selectedBuyers: selectedBuyers.join(",") },
+              query: {
+                selectedBuyers: selectedBuyers.join(","),
+                price: router.query.price,
+                phone: router.query.phone,
+                email: router.query.email,
+                size: router.query.size,
+                zipcode: router.query.zipcode,
+                estateType: router.query.estateType,
+                message: router.query.message,
+              },
             }}
           >
             <button

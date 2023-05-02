@@ -8,6 +8,12 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRweXNmcmtpd2Nrb3lkd3NibGVvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4MjU4MzQxNCwiZXhwIjoxOTk4MTU5NDE0fQ.H5j86z9-UnYgRdUX1jifGjuq1zqchKFdNE1aiMFEbxA"
 );
 
+/* export async function getServerSideProps(context) {
+  const { price, size, message, zipcode } = context.query;
+  return {
+    props: { price, size, message, zipcode },
+  };
+} */
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,7 +21,9 @@ export default function Contact() {
   const [selectedBuyers, setSelectedBuyers] = useState([]);
 
   const router = useRouter();
+  const { query } = useRouter();
   const { selectedBuyers: selectedBuyersQuery } = router.query;
+  console.log("Here is my query:", query, name, email, phone);
 
   // Parse the query parameter and update the selectedBuyers state
   useEffect(() => {
@@ -27,9 +35,18 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data, error } = await supabase
-      .from("seller-info")
-      .insert([{ name, email, phone }]);
+    const { data, error } = await supabase.from("sellerinfo").insert([
+      {
+        price: query.price,
+        size: query.size,
+        zipcode: query.zipcode,
+        message: query.message,
+        buyers: selectedBuyersQuery,
+        name: name, // Update here
+        email: email, // Update here
+        phone: phone, // Update here
+      },
+    ]);
     if (error) {
       console.log("Error inserting data: ", error.message);
     } else {
@@ -39,9 +56,20 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, phone }),
+        body: JSON.stringify({
+          price: query.price,
+          size: query.size,
+          zipcode: query.zipcode,
+          message: query.message,
+          buyers: selectedBuyersQuery,
+          name,
+          email,
+          phone,
+        }),
       });
+
       console.log("Response status:", response.status);
+
       if (response.ok) {
         console.log("Navigating to success page...");
       } else {
@@ -49,7 +77,9 @@ export default function Contact() {
       }
     }
     router.push("/thank-you");
+    console.log("e is: ", e);
   };
+
   return (
     <>
       <h1 className={styles.headline}>Contact Potential Buyers</h1>
@@ -68,6 +98,11 @@ export default function Contact() {
       <div id="contactform" className="wrapper">
         <div className={styles.content}>
           <form onSubmit={handleSubmit}>
+            <input name="price" value={query.price} />
+            <input name="size" value={query.size} />
+            <input name="zipcode" value={query.zipcode} />
+            <input name="message" value={query.message} />
+            <input name="estateType" value={query.estateType} />
             <label>
               Name:
               <input
