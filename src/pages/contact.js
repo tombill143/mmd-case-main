@@ -1,61 +1,80 @@
-import { useState } from "react";
-import styles from "./Home.module.css";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import styles from "./buyers/Buyers.module.css";
 
-function ContactForm() {
+export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [selectedBuyers, setSelectedBuyers] = useState([]);
 
-  const handleSubmit = async (e) => {
+  const router = useRouter();
+  const { selectedBuyers: selectedBuyersQuery } = router.query;
+
+  // Parse the query parameter and update the selectedBuyers state
+  useEffect(() => {
+    if (selectedBuyersQuery) {
+      const selectedBuyersArray = selectedBuyersQuery.split(",");
+      setSelectedBuyers(selectedBuyersArray);
+    }
+  }, [selectedBuyersQuery]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const res = await fetch("/api/contact", {
-      body: JSON.stringify({ name, email, message }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-    const result = await res.json();
-    console.log(result);
+    // Do something with the form data and the selectedBuyers data
+    console.log({ name, email, phone, selectedBuyers });
   };
 
   return (
-    <div className="formWrapper">
-      <h1 className={styles.headline}>Find A buyer for your property</h1>
-      <div className={styles.content}>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Price</label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label htmlFor="email">Size in Meters</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="email">Size in Meters</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <button type="submit">Submit</button>
-        </form>
+    <>
+      <h1 className={styles.headline}>Contact Potential Buyers</h1>
+      {selectedBuyers.length > 0 && (
+        <>
+          <h2 id="selectedBuyers" className={styles.headline}>
+            Selected buyers:
+          </h2>
+          <ul>
+            {selectedBuyers.map((buyer) => (
+              <li key={buyer}>Buyer Id: {buyer}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      <div id="contactform" className="wrapper">
+        <div className={styles.content}>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Name:
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Email:
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Phone:
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                maxLength={8}
+                required
+              />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
-
-export default ContactForm;

@@ -77,8 +77,114 @@ h2 {
   text-align: center;
 }
 
-.formWrapper {
+/* .formWrapper {
   max-width: 1000px;
   padding: 0 1rem;
   margin: 0 auto;
+} */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form label,
+form input,
+form textarea {
+  display: block;
+  margin-bottom: 1em;
+}
+
+form input,
+form textarea {
+  width: 100%;
+}
+
+form button[type="submit"] {
+  display: block;
+  margin-top: 1em;
+}
+
+input,
+textarea {
+  width: 100%;
+  max-width: 300px;
+}
+
+.headline {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.Home_content__bX2HC {
+  margin-top: 3em;
+}
+
+.formWrapper {
+  margin-left: 24em;
+  margin-right: 20em;
+  margin-bottom: 3em;
+}
+
+select#property-type {
+  padding: 0.5em;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.buyer {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.thanks {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.heart {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 3em;
+}
+
+.ref-customer {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: dashed;
+  border-radius: 12px;
+  background-color: lightblue;
+  width: 12em;
+}
+
+.ref {
+  margin-left: 0.5em;
+}
+
+#return {
+  display: block;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  border: 1px dashed black;
+  width: 15%;
+  margin-left: 1em;
+  border-radius: 16px;
+  background-color: #93d0fe;
+}
+
+#selectedBuyers {
+  margin-right: 26em;
+}
+
+#contactform {
+  margin-left: 33em;
 }
