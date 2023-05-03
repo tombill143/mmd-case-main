@@ -97,7 +97,7 @@ export default function Buyers() {
                 email: router.query.email,
                 size: router.query.size,
                 zipcode: router.query.zipcode,
-                estateType: router.query.estateType,
+                estateType: router.query.propertyType,
                 message: router.query.message,
               },
             }}

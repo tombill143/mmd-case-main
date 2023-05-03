@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./buyers/Buyers.module.css";
 import { createClient } from "@supabase/supabase-js";
+import { estateTypes } from "@/data/estateTypes";
 
 const supabase = createClient(
   "https://tpysfrkiwckoydwsbleo.supabase.co",
@@ -45,6 +46,7 @@ export default function Contact() {
         name: name, // Update here
         email: email, // Update here
         phone: phone, // Update here
+        estateType: router.query.estateType,
       },
     ]);
     if (error) {
@@ -62,6 +64,7 @@ export default function Contact() {
           zipcode: query.zipcode,
           message: query.message,
           buyers: selectedBuyersQuery,
+          estateType: router.query.estateType,
           name,
           email,
           phone,
@@ -102,7 +105,7 @@ export default function Contact() {
             <input name="size" value={query.size} />
             <input name="zipcode" value={query.zipcode} />
             <input name="message" value={query.message} />
-            <input name="estateType" value={query.estateType} />
+            <input name="estateType" value={router.query.estateType} />
             <label>
               Name:
               <input

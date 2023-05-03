@@ -160,8 +160,8 @@ export default function Home() {
               onChange={(e) => setMessage(e.target.value)}
               required
             />
-            <label htmlFor="property-type">Property Type:</label>
-            <select id="property-type" name="property-type" required>
+            <label htmlFor="propertyType">Property Type:</label>
+            <select id="propertyType" name="propertyType" required>
               <option value="">Choose a property type</option>
               <option id="villa" name="villa" value="villa">
                 Villa
