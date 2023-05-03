@@ -161,15 +161,15 @@ export default function Home() {
               required
             />
             <label htmlFor="propertyType">Property Type:</label>
-            <select id="propertyType" name="propertyType" required>
+            <select id="estateType" name="estateType" required>
               <option value="">Choose a property type</option>
               <option id="villa" name="villa" value="villa">
                 Villa
               </option>
-              <option id="apartment" name="apartment" value="apartment">
+              <option id="lejlighed" name="lejlighed" value="lejlighed">
                 Lejlighed
               </option>
-              <option id="condo" name="condon" value="condo">
+              <option id="rækkehus" name="rækkehus" value="rækkehus">
                 Rækkehus
               </option>
             </select>

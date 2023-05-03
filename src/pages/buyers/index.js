@@ -38,6 +38,7 @@ export default function Buyers() {
 
   // Function to send user to contact page
   const contactClick = () => {
+    console.log("im here");
     router.push("/contact");
   };
 
@@ -97,7 +98,7 @@ export default function Buyers() {
                 email: router.query.email,
                 size: router.query.size,
                 zipcode: router.query.zipcode,
-                estateType: router.query.propertyType,
+                estateType: router.query.estateType,
                 message: router.query.message,
               },
             }}

@@ -24,7 +24,7 @@ export default function Contact() {
   const router = useRouter();
   const { query } = useRouter();
   const { selectedBuyers: selectedBuyersQuery } = router.query;
-  console.log("Here is my query:", query, name, email, phone);
+  console.log("Here is my query:", router, name, email, phone);
 
   // Parse the query parameter and update the selectedBuyers state
   useEffect(() => {
@@ -42,11 +42,11 @@ export default function Contact() {
         size: query.size,
         zipcode: query.zipcode,
         message: query.message,
-        buyers: selectedBuyersQuery,
+        buyers: selectedBuyers,
         name: name, // Update here
         email: email, // Update here
         phone: phone, // Update here
-        estateType: router.query.estateType,
+        estateType: query.estateType,
       },
     ]);
     if (error) {
@@ -64,13 +64,13 @@ export default function Contact() {
           zipcode: query.zipcode,
           message: query.message,
           buyers: selectedBuyersQuery,
-          estateType: router.query.estateType,
+          estateType: query.estateType,
           name,
           email,
           phone,
         }),
       });
-
+      console.log("query.price is here", query.price);
       console.log("Response status:", response.status);
 
       if (response.ok) {
