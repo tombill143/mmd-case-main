@@ -50,26 +50,43 @@ function AdminDashboard() {
             //if nothing is loaded, it will write loading... as in the p-tag, instead of error
             //dont think the ? and stuff is nessesary but i trie troubleshooting along the way
             //and now im too scared to remove it lmao
-            <ul>
+            <ul className={styles.ul}>
+              {/* for some reason it's the ul that needs to be styled with grid, lol */}
               {sellerinfo.map((seller) => (
                 <div className={styles.content} key={seller.id}>
-                  <p>Date: {seller.created_at}</p>
-                  <p>Name: {seller.name}</p>
                   <p>
-                    E-mail: <a href="emailto:">{seller.email}</a>
+                    <strong>Date: </strong>
+                    {seller.created_at}
                   </p>
                   <p>
-                    Phone: <a href="phone:">{seller.phone}</a>
+                    <strong>Name:</strong> {seller.name}
                   </p>
-                  <p>Buyers: {seller.buyers}</p>
-                  <p>Zipcode: {seller.zipcode}</p>
-                  <p>Estate type: {seller.estateType}</p>
-                  <p>Size: {seller.size} m2</p>
+                  <p>
+                    <strong>E-mail:</strong>{" "}
+                    <a href="emailto:">{seller.email}</a>
+                  </p>
+                  <p>
+                    <strong>Phone:</strong> <a href="phone:">{seller.phone}</a>
+                  </p>
+                  <p>
+                    <strong>Buyers:</strong> {seller.buyers}
+                  </p>
+                  <p>
+                    <strong>Zipcode:</strong> {seller.zipcode}
+                  </p>
+                  <p>
+                    <strong>Estate type:</strong> {seller.estateType}
+                  </p>
+                  <p>
+                    <strong>Size:</strong> {seller.size} m²
+                  </p>
                   <p className={styles.messagebox}>
-                    Message from client: {seller.message}
+                    <strong>Message from client:</strong>{" "}
+                    <i>"{seller.message}"</i>
                   </p>
                   <button
                     className={styles.xButton}
+                    title="Delete seller"
                     onClick={() => deleteSeller(seller.id)}
                   >
                     x
