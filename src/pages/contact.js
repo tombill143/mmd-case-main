@@ -101,11 +101,15 @@ export default function Contact() {
       <div id="contactform" className="wrapper">
         <div className={styles.content}>
           <form onSubmit={handleSubmit}>
-            <input name="price" value={query.price} />
-            <input name="size" value={query.size} />
-            <input name="zipcode" value={query.zipcode} />
-            <input name="message" value={query.message} />
-            <input name="estateType" value={router.query.estateType} />
+            <input type="hidden" name="price" value={query.price} />
+            <input type="hidden" name="size" value={query.size} />
+            <input type="hidden" name="zipcode" value={query.zipcode} />
+            <input type="hidden" name="message" value={query.message} />
+            <input
+              type="hidden"
+              name="estateType"
+              value={router.query.estateType}
+            />
             <label>
               Name:
               <input
