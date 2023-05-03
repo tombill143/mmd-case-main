@@ -176,3 +176,24 @@ select#property-type {
   display: block;
   margin: 0 auto;
 }
+
+ul {
+  list-style-type: none;
+  border: 1px dashed black;
+  width: 15%;
+  margin-left: 1em;
+  border-radius: 16px;
+  background-color: #93d0fe;
+}
+
+#selectedBuyers {
+  margin-right: 26em;
+}
+
+#contactform {
+  margin-left: 33em;
+}
+
+.dashboardul {
+  width: 100%;
+}

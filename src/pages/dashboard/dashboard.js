@@ -53,7 +53,7 @@ function AdminDashboard() {
         //if nothing is loaded, it will write loading... as in the p-tag, instead of error
         //dont think the ? and stuff is nessesary but i trie troubleshooting along the way
         //and now im too scared to remove it lmao 
-            <ul className={styles.ul}>
+            <div className={styles.ul}>
               {/* for some reason it's the ul that needs to be styled with grid, lol */}
              {sellerinfo.map((seller) => (
               <div className={styles.content} key={seller.id}>
@@ -72,7 +72,7 @@ function AdminDashboard() {
             //seller is a variable we create in here, not linked to names in the database really
             //name and id is fromt he database tho!
               ))}
-              </ul>
+              </div>
               ) : (
             <p>Loading...</p>
       )}

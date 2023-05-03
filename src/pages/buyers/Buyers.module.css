@@ -1,6 +1,9 @@
 /* @import "./src/styles/globals.css"; */
 /* @import "fonts.css"; */
 
+/* @import "./src/styles/globals.css"; */
+/* @import "fonts.css"; */
+
 .headline {
   font-size: 2rem;
   font-family: var(--font-serif);
@@ -27,7 +30,7 @@
   width: 25rem;
   height: auto;
   /* overflow: visible; */
-  overflow-wrap:break-word;
+  overflow-wrap: break-word;
   
   
   /* max-width: 50vw; */
@@ -53,6 +56,82 @@
 }
 .content :last-child {
   margin-bottom: 0;
+}
+
+.content input {
+  width: auto;
+  box-shadow: none;
+  margin: 0 0 2rem 0;
+}
+
+.content {
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.text {
+  max-width: 100%;
+}
+
+.checkbox-container {
+  display: block;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.family {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 3em;
+}
+
+.pre {
+  max-width: 600px;
+  word-wrap: break-word;
+  margin-bottom: 1em;
+}
+
+.content p {
+  white-space: pre-wrap;
+}
+
+.content input {
+  width: auto;
+  box-shadow: none;
+  margin: 0 0 2rem 0;
+}
+
+.content {
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.text {
+  max-width: 100%;
+}
+
+.checkbox-container {
+  display: block;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.family {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 3em;
+}
+
+.pre {
+  max-width: 600px;
+  word-wrap: break-word;
+  margin-bottom: 1em;
+}
+
+.content p {
+  white-space: pre-wrap;
 }
 
 .content input{

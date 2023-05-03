@@ -79,6 +79,12 @@ export default ContactForm; */
 import Head from "next/head";
 import styles from "./Home.module.css";
 import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  "https://tpysfrkiwckoydwsbleo.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRweXNmcmtpd2Nrb3lkd3NibGVvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4MjU4MzQxNCwiZXhwIjoxOTk4MTU5NDE0fQ.H5j86z9-UnYgRdUX1jifGjuq1zqchKFdNE1aiMFEbxA"
+);
 
 export default function Home() {
   const [price, setPrice] = useState("");
@@ -88,16 +94,27 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/api/contact", {
-      body: JSON.stringify({ price, size, zipcode, message }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
+    const { data, error } = await supabase
+      .from("properties")
+      .insert({ price, size, zipcode, message });
+
+    if (error) {
+      console.error(error);
+    } else {
+      console.log("Data inserted successfully:", data);
+    }
+
+    Router.push({
+      pathname:
+        "http://localhost:3000/contact?selectedBuyers=f0118597%2Ca2a94863",
+      query: { data: JSON.stringify(data) },
     });
-    const result = await res.json();
-    console.log(result);
   };
+
+  console.log("Size: ", size);
+  console.log("Price: ", price);
+  console.log("Zipcode: ", zipcode);
+  console.log("Message: ", message);
 
   return (
     <>
@@ -112,6 +129,7 @@ export default function Home() {
             <input
               id="price"
               type="text"
+              name="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               required
@@ -120,6 +138,7 @@ export default function Home() {
             <input
               id="size"
               type="text"
+              name="size"
               value={size}
               onChange={(e) => setSize(e.target.value)}
               required
@@ -128,6 +147,7 @@ export default function Home() {
             <input
               id="zipcode"
               type="text"
+              name="zipcode"
               value={zipcode}
               onChange={(e) => setZipcode(e.target.value)}
               required
@@ -136,15 +156,22 @@ export default function Home() {
             <textarea
               id="message"
               value={message}
+              name="message"
               onChange={(e) => setMessage(e.target.value)}
               required
             />
-            <label htmlFor="property-type">Property Type:</label>
-            <select id="property-type" name="property-type" required>
+            <label htmlFor="propertyType">Property Type:</label>
+            <select id="estateType" name="estateType" required>
               <option value="">Choose a property type</option>
-              <option value="house">Villa</option>
-              <option value="apartment">Lejlighed</option>
-              <option value="condo">Rækkehus</option>
+              <option id="villa" name="villa" value="villa">
+                Villa
+              </option>
+              <option id="lejlighed" name="lejlighed" value="lejlighed">
+                Lejlighed
+              </option>
+              <option id="rækkehus" name="rækkehus" value="rækkehus">
+                Rækkehus
+              </option>
             </select>
             <button className={styles.button}>Find Potential Buyers</button>
           </form>

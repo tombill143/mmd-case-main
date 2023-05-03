@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export default function Buyers() {
   const [buyerProfiles, setBuyerProfiles] = useState([]);
-  const [selectedBuyers, setSelectedBuyers] = useState ([]);
-  //the checkboxes, to change the state when selected
+  const [selectedBuyers, setSelectedBuyers] = useState([]);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
   useEffect(() => {
     const fetchBuyerProfiles = async () => {
@@ -19,9 +19,8 @@ export default function Buyers() {
   }, []);
 
   const router = useRouter();
-  
 
- //buyer checkbox
+  // Buyer checkbox
   const handleBuyerSelect = (buyerId) => {
     // If buyer is already selected, remove it from the selected buyers list
     if (selectedBuyers.includes(buyerId)) {
@@ -30,37 +29,36 @@ export default function Buyers() {
       // Otherwise, add it to the selected buyers list
       setSelectedBuyers([...selectedBuyers, buyerId]);
     }
-
-   
   };
 
-   //function to send user to contact page!
+  // Checkbox change handler
+  const handleCheckboxChange = () => {
+    setIsCheckboxChecked(!isCheckboxChecked);
+  };
+
+  // Function to send user to contact page
   const contactClick = () => {
-    router.push('/contact');
+    console.log("im here");
+    router.push("/contact");
   };
-
-//   const [checked, setChecked] = React.useState(true);
-//  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-// setChecked(event.target.checked);
 
   return (
     <>
       <Head>
         <title>Potential buyers | EDC</title>
       </Head>
+
       <div className="wrapper">
         <h1 className={styles.headline}>Potential buyersss</h1>
         <p>
           Thank you for submitting your info on your property. On this page we
           have listed suitable buyers. Please read through the list and add the
-          ones that are interesting by clicking the + icon in the corner of
-          each buyer
+          ones that are interesting by clicking the + icon in the corner of each
+          buyer.
         </p>
         <div className={styles.content_container}>
+          {/* Render a div for each buyer profile */}
           {buyerProfiles.map((buyer) => (
-            // copying and posting new mapped array
-            //shoyld we use stringify like in Jonas' live coding example? 
-            //Not gonna change it now, as i want to see what need to be done to hook this site up to contact/first site
             <div className={styles.content} key={buyer.id}>
               <div className={styles.id_checkbox}>
                   <h2>Buyer Id: {buyer.id}</h2>
@@ -74,7 +72,6 @@ export default function Buyers() {
                   {/* this transfers the selected buyers iID to state, so we just need to find a way to get it to the next side also! */}
                   {/* /////////////////////// */}
               </div>
-
               <pre>
                 {/* "pre respects line breaks" */}
                 {/* note to self: could have a BUYER NO X instead of ID at the top, looks nicer */}
@@ -137,23 +134,49 @@ export default function Buyers() {
                 <p>Possible take-over-date: {buyer.takeoverDate}</p>
                 </div>
 
-
-             
-
-
-                {/* <code>{JSON.stringify(buyer, null, 2)}</code> */}
               </pre>
-              {/* <embed src="icon-heart.svg"></embed>
-              */}
-             
 
-
+              {/* Render a checkbox for selecting the buyer */}
+              <div className="checkbox-container">
+                <label>
+                  Choose buyer
+                  <input
+                    type="checkbox"
+                    checked={selectedBuyers.includes(buyer.id)}
+                    onChange={() => handleBuyerSelect(buyer.id)}
+                  />
+                </label>
+              </div>
             </div>
-          ))};
+          ))}
 
-
-          <Link href="/contact"> 
-          <button className={styles.button} onClick={contactClick}>Contact Potential Buyers</button>
+          {/* Render a button for navigating to the contact page */}
+          <Link
+            href={{
+              pathname: "/contact",
+              query: {
+                selectedBuyers: selectedBuyers.join(","),
+                price: router.query.price,
+                phone: router.query.phone,
+                email: router.query.email,
+                size: router.query.size,
+                zipcode: router.query.zipcode,
+                estateType: router.query.estateType,
+                message: router.query.message,
+              },
+            }}
+          >
+            <button
+              className={styles.button}
+              onClick={contactClick}
+              disabled={!selectedBuyers.length}
+              style={{
+                backgroundColor:
+                  selectedBuyers.length === 0 ? "grey" : "#164573",
+              }}
+            >
+              Contact Potential Buyers
+            </button>
           </Link>
         </div>
       </div>
