@@ -80,6 +80,7 @@ import Head from "next/head";
 import styles from "./Home.module.css";
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
+import Link from "next/link";
 
 const supabase = createClient(
   "https://tpysfrkiwckoydwsbleo.supabase.co",
@@ -121,6 +122,11 @@ export default function Home() {
       <Head>
         <title>Find buyer | EDC</title>
       </Head>
+      <Link href="/dashboard/dashboard">
+        <button id="dashbutton" className={styles.button}>
+          Admin Dashboard
+        </button>
+      </Link>
       <div className="wrapper">
         <h1 className={styles.headline}>Find A buyer for your property</h1>
         <div className={styles.content}>
