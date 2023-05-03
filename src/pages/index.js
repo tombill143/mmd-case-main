@@ -1,5 +1,3 @@
-
-
 //-----------------------THIS IS THE DEFAULT CODE WHICH I DIDN'T WANNA DELETE JUST IN CASE IT IS NEED LATER----------------
 
 import Head from "next/head";
@@ -112,4 +110,3 @@ export default function Home() {
     </>
   );
 }
-
