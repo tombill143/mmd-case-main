@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-<<<<<<< HEAD
 import styles from "./buyers/Buyers.module.css";
-=======
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
+import { createClient } from "@supabase/supabase-js";
+import { estateTypes } from "@/data/estateTypes";
 
+const supabase = createClient(
+  "https://tpysfrkiwckoydwsbleo.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRweXNmcmtpd2Nrb3lkd3NibGVvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4MjU4MzQxNCwiZXhwIjoxOTk4MTU5NDE0fQ.H5j86z9-UnYgRdUX1jifGjuq1zqchKFdNE1aiMFEbxA"
+);
+
+/* export async function getServerSideProps(context) {
+  const { price, size, message, zipcode } = context.query;
+  return {
+    props: { price, size, message, zipcode },
+  };
+} */
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-<<<<<<< HEAD
   const [phone, setPhone] = useState("");
-=======
-  const [message, setMessage] = useState("");
-  const [zipcode, setZipcode] = useState("");
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
   const [selectedBuyers, setSelectedBuyers] = useState([]);
 
   const router = useRouter();
+  const { query } = useRouter();
   const { selectedBuyers: selectedBuyersQuery } = router.query;
+  console.log("Here is my query:", router, name, email, phone);
 
   // Parse the query parameter and update the selectedBuyers state
   useEffect(() => {
@@ -27,31 +34,63 @@ export default function Contact() {
     }
   }, [selectedBuyersQuery]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Do something with the form data and the selectedBuyers data
-<<<<<<< HEAD
-    console.log({ name, email, phone, selectedBuyers });
-=======
-    console.log({ name, email, message, zipcode, selectedBuyers });
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
+    const { data, error } = await supabase.from("sellerinfo").insert([
+      {
+        price: query.price,
+        size: query.size,
+        zipcode: query.zipcode,
+        message: query.message,
+        buyers: selectedBuyers,
+        name: name, // Update here
+        email: email, // Update here
+        phone: phone, // Update here
+        estateType: query.estateType,
+      },
+    ]);
+    if (error) {
+      console.log("Error inserting data: ", error.message);
+    } else {
+      console.log("Data inserted successfully: ", data);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          price: query.price,
+          size: query.size,
+          zipcode: query.zipcode,
+          message: query.message,
+          buyers: selectedBuyersQuery,
+          estateType: query.estateType,
+          name,
+          email,
+          phone,
+        }),
+      });
+      console.log("query.price is here", query.price);
+      console.log("Response status:", response.status);
+
+      if (response.ok) {
+        console.log("Navigating to success page...");
+      } else {
+        console.log("Error submitting form data");
+      }
+    }
+    router.push("/thank-you");
+    console.log("e is: ", e);
   };
 
   return (
     <>
-<<<<<<< HEAD
       <h1 className={styles.headline}>Contact Potential Buyers</h1>
       {selectedBuyers.length > 0 && (
         <>
           <h2 id="selectedBuyers" className={styles.headline}>
             Selected buyers:
           </h2>
-=======
-      <h1>Contact Potential Buyers</h1>
-      {selectedBuyers.length > 0 && (
-        <>
-          <h2>Selected buyers:</h2>
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
           <ul>
             {selectedBuyers.map((buyer) => (
               <li key={buyer}>Buyer Id: {buyer}</li>
@@ -59,10 +98,18 @@ export default function Contact() {
           </ul>
         </>
       )}
-<<<<<<< HEAD
       <div id="contactform" className="wrapper">
         <div className={styles.content}>
           <form onSubmit={handleSubmit}>
+            <input type="hidden" name="price" value={query.price} />
+            <input type="hidden" name="size" value={query.size} />
+            <input type="hidden" name="zipcode" value={query.zipcode} />
+            <input type="hidden" name="message" value={query.message} />
+            <input
+              type="hidden"
+              name="estateType"
+              value={router.query.estateType}
+            />
             <label>
               Name:
               <input
@@ -95,12 +142,6 @@ export default function Contact() {
           </form>
         </div>
       </div>
-=======
-      <form onSubmit={handleSubmit}>
-        {/* Form fields */}
-        <button type="submit">Submit</button>
-      </form>
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
     </>
   );
 }

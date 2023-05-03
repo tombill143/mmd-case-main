@@ -1,8 +1,5 @@
-/* @import "./src/styles/globals.css"; */
-/* @import "fonts.css"; */
-
 .headline {
-  font-size: 2rem;
+  font-size: 3rem;
   font-family: var(--font-serif);
   text-align: center;
   font-weight: 400;
@@ -10,24 +7,14 @@
   line-height: 1.2;
 }
 
-<<<<<<< HEAD
 .content_container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* background-color: aquamarine; */
   gap: 1rem;
-=======
-.content_container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* background-color: aquamarine; */
-  gap: 3rem;
-
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
 }
 
 .content {
-  
   padding: 1rem;
   background-color: var(--dusty-aqua-light);
   border: 1px solid var(--dusty-aqua);
@@ -35,49 +22,29 @@
   width: 25rem;
   height: auto;
   /* overflow: visible; */
-<<<<<<< HEAD
   overflow-wrap: break-word;
 
-=======
-  overflow-wrap:break-word;
-  
-  
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
   /* max-width: 50vw; */
   /* overflow:-moz-hidden-unscrollable; */
   /* word-wrap: break-word; */
 
   /* overflow-wrap: normal; */
   /* overflow-wrap: break-word; */
-<<<<<<< HEAD
 }
 
 .content p {
   /* word-wrap: break-word; */
   /* --font-sans: "Lato", sans-serif;  this doesnt show the right font as it should??*/
   font-family: lato;
-=======
-
-}
-
-.content p{
-  /* word-wrap: break-word; */
-  /* --font-sans: "Lato", sans-serif;  this doesnt show the right font as it should??*/
-  font-family: lato;
-
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
 }
 
 .content :first-child {
   margin-top: 0;
-
-
 }
 .content :last-child {
   margin-bottom: 0;
 }
 
-<<<<<<< HEAD
 .content input {
   width: auto;
   box-shadow: none;
@@ -114,57 +81,3 @@
 .content p {
   white-space: pre-wrap;
 }
-=======
-.content input{
-  width: auto;
-  box-shadow: none;
-  /* float: right; */
-  margin: 0 0 2rem 0;
- 
-
-}
-
-/* .content .checkbox{
-/* trying to find the tag to change the style of the checkbox color etc. */
-
-
-
-
-.button:hover {
-  background: var(--hover);
-}
-
-.assets{
- width: 1rem;
- height: 1rem;
-}
-
-.icontext{
-  display: flex;
-  flex-direction: row;
-  margin: 1rem 0 1.5rem 0;
-  
-
-}
-
-.icontext p{
-  margin: 0 0 0 1rem;
-}
-
-.id_checkbox{
-  display: flex;
-  flex-direction: row;
-justify-content: center;
-  margin-bottom: 3rem;
-}
-
-.id_checkbox h2{
-  margin: 0;
-
-}
-
-.id_checkbox input{
-  position: relative;
-  left: 4rem;
-}
->>>>>>> 3e6301cfdb308435f9670a89207e946ffe38bd16
