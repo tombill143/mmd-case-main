@@ -32,6 +32,7 @@
   padding: 0;
 }
 
+
 /* .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -45,9 +46,12 @@
 } */
 
 .xButton {
-  max-width: 1rem;
-  border-radius: 0.3rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
   justify-self: center;
   justify-content: center;
   background-color: var(--dusty-aqua);
+  
+  
 }
