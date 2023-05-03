@@ -82,7 +82,9 @@ function AdminDashboard() {
                   </p>
                   <p className={styles.messagebox}>
                     <strong>Message from client:</strong>{" "}
-                    <i>"{seller.message}"</i>
+                    <i>
+                      &ldquo;{seller.message.replace(/"/g, "&quot;")}&rdquo;
+                    </i>
                   </p>
                   <button
                     className={styles.xButton}
