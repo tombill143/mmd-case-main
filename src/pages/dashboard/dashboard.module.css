@@ -15,19 +15,23 @@
   margin-bottom: 0;
 }
 
-.content_container{
-  background-color: blue;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  
 
-}
+
 .content {
-  background-color: red;
-  /* background-color: var(--dusty-aqua-light); */
+  background-color: var(--dusty-aqua-light);
   border: 1px solid var(--dusty-aqua);
+  padding: 1rem;
   /* margin-bottom: 1rem; */
 }
+
+.ul{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  margin: 1rem;
+  padding: 0;
+}
+
 /* .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
