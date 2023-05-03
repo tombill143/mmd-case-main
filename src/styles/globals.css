@@ -197,3 +197,8 @@ ul {
 .dashboardul {
   width: 100%;
 }
+
+#dashbutton {
+  margin-right: 8em;
+  float: right;
+}
