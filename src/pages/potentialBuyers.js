@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "../styles/Buyers.module.css";
 
 function PotentialBuyers() {
   const [buyers, setBuyers] = useState([]);
